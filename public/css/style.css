@@ -1,0 +1,45 @@
+.container {
+    max-width: 450px;
+    margin-top: 13%;
+    border: solid black 2px;
+    padding: 20px;
+    border-radius: 20px;
+
+}
+
+
+.title {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+
+.col {
+    margin-bottom: 20px;
+}
+
+.cadastro {
+    max-width: 900px;
+    padding: 20px;
+    margin-top: 5%;
+    margin-bottom: 100px;
+}
+
+.btn-login {
+    margin-left: 70%;
+    margin-right: 15px;
+}
+
+.login-text {
+    margin-left: 43%;
+}
+
+.alterar{
+    margin: 5%;
+}
+
+.card{
+    max-width: max-content;min-width: 1200px;
+    padding: 30px;
+}
