@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\SystemController;
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [SystemController::class, 'index']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/system/create', [SystemController::class, 'create']);
+require __DIR__.'/auth.php';
