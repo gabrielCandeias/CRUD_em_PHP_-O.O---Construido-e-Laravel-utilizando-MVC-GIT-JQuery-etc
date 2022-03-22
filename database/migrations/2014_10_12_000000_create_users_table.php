@@ -17,8 +17,22 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            /*$table->timestamp('email_verified_at')->nullable();*/
             $table->string('password');
+
+            $table->string('cpf',50);
+            $table->string('rg',50);
+            $table->date('data_nascimento');
+            $table->string('sexo',2);
+            $table->string('cep',50);
+            $table->string('endereco',255);
+            $table->string('numero',50);
+            $table->string('bairro',255);
+            $table->string('complemento')->nullable();
+            $table->string('estado',255);
+            $table->string('cidade',255);
+            $table->string('telefone',50);
+            $table->string('celular',50);
+            $table->string('status')->default('S');
             $table->rememberToken();
             $table->timestamps();
         });

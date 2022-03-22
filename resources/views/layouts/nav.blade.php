@@ -17,17 +17,18 @@
 
                 </li>
 
-                
+
                 <li class="nav-item">
                     <a class="nav-link" href="/alterar_cadastros">Visualizar cadastros</a>
                 </li>
-                
+
 
 
 
             </ul>
-            <form class="d-flex">
-                <a href="/login" class="btn btn-outline-danger" type="submit">Sair</a>
+            <form action="/logout" method="POST">
+                @csrf
+                <a href="/logout" class="btn btn-outline-danger" onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
             </form>
         </div>
     </div>

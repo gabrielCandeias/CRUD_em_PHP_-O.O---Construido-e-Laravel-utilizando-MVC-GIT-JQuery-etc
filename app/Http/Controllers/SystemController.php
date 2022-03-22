@@ -8,13 +8,8 @@ class SystemController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('dashboard');
     }
-
-    public function create()
-    {
-        return view('system.create');
-    }
-
+    
     
 }
