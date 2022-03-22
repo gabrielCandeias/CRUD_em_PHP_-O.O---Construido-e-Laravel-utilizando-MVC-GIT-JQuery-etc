@@ -10,6 +10,8 @@ class SystemController extends Controller
     {
         return view('dashboard');
     }
+
+    
     
     
 }

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Estado;
+use App\Models\Cidade;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +22,10 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $estados = Estado::All();
+        $cidades = Cidade::All();
+       
+        return view('auth.register', ['estados' => $estados,'cidades' => $cidades]);
     }
 
     /**
@@ -46,8 +51,7 @@ class RegisteredUserController extends Controller
             'numero'    => 'required|string|max:50',
             'bairro'    => 'required|string|max:255',
             'complemento' => 'max:255',
-            'estado'    => 'required|string|max:255',
-            'cidade'    => 'required|string|max:255',
+            'cidade_id'    => 'required|numeric|max:5',
             'telefone'  => 'required|string|max:50',
             'celular'   => 'required|string|max:50',
         ]);
@@ -65,8 +69,7 @@ class RegisteredUserController extends Controller
             'numero' => $request->numero,
             'bairro' => $request->bairro,
             'complemento' => $request->complemento,
-            'estado' => $request->estado,
-            'cidade' => $request->cidade,
+            'cidade_id' => $request->cidade_id,
             'telefone' => $request->telefone,
             'celular' => $request->celular,
         ]);
@@ -77,4 +80,6 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    
 }

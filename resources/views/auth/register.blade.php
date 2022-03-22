@@ -59,9 +59,9 @@
 
                     <select class="form-select" aria-label="Default select example" name="sexo" id="sexo">
 
-                        <option value="ND" @if (old('sexo') == "ND") {{ 'selected' }} @endif>Prefiro Não Declarar</option>
-                        <option value="M"  @if (old('sexo') == "M") {{ 'selected' }} @endif>Masculino</option>
-                        <option value="F"  @if (old('sexo') == "F") {{ 'selected' }} @endif>Feminino</option>
+                        <option value="ND" @if (old('sexo')=="ND" ) {{ 'selected' }} @endif>Prefiro Não Declarar</option>
+                        <option value="M" @if (old('sexo')=="M" ) {{ 'selected' }} @endif>Masculino</option>
+                        <option value="F" @if (old('sexo')=="F" ) {{ 'selected' }} @endif>Feminino</option>
 
                     </select>
                 </div>
@@ -98,11 +98,20 @@
                 </div>
                 <div class="col">
                     <x-label for="estado" value="Estado" />
-                    <x-input id="estado" class="block mt-1 w-full" type="text" name="estado" :value="old('estado')" required />
+                    <select class="form-select block mt-1 w-full" aria-label="Default select example" name="estado" id="estado">
+                        @foreach($estados as $estado)
+                        <option value="{{$estado->id}}" @if (old('estado')=="{{$estado->id}}" ) {{ 'selected' }} @endif> {{$estado->nome}} </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col">
                     <x-label for="cidade" value="Cidade" />
-                    <x-input id="cidade" class="block mt-1 w-full" type="text" name="cidade" :value="old('cidade')" required />
+
+                    <select class="form-select block mt-1 w-full" aria-label="Default select example" name="cidade_id" id="cidade_id">
+                        @foreach($cidades as $cidade)
+                        <option value="{{$cidade->id}}" @if (old('cidade')=="{{$cidade->id}}" ) {{ 'selected' }} @endif>{{$cidade->nome}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
             </div>

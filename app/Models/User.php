@@ -30,12 +30,14 @@ class User extends Authenticatable
         'numero',
         'bairro',
         'complemento',
-        'estado',
-        'cidade',
+        'cidade_id', 
         'telefone',
         'celular',
         'status',
     ];
+    public function cidade(){
+        return $this->belongsTo('App\Models\Cidade');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

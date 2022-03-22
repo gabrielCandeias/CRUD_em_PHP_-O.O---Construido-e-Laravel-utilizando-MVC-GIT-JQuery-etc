@@ -16,6 +16,7 @@ use App\Http\Controllers\SystemController;
 
 Route::get('/', [SystemController::class, 'index']);
 
+
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
