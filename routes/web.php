@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\SystemController;
 
-Route::get('/', [SystemController::class, 'index']);
+Route::get('/', [SystemController::class, 'index'])->middleware(['auth']);
 
+Route::get('/auth/adiministracao', [SystemController::class, 'adiministracao'])->middleware(['auth']);
+
+Route::delete('auth/adiministracao/{id}', [SystemController::class, 'destroy'])->middleware(['auth']);
 
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__ . '/auth.php';

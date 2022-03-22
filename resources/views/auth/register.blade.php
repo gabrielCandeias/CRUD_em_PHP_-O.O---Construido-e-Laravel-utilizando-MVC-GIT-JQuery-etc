@@ -119,7 +119,7 @@
 
                 <div class="col">
                     <x-label for="telefone" value="Telefone" />
-                    <x-input id="telefone" class="block mt-1 w-full" type="tel" name="telefone" :value="old('telefone')" onkeypress="$(this).mask('(00) 0000-00009')" required />
+                    <x-input id="telefone" class="block mt-1 w-full" type="tel" name="telefone" :value="old('telefone')" onkeypress="$(this).mask('(00) 0000-00009')"  required />
                 </div>
                 <div class="col">
                     <x-label for="celular" value="Celular" />
