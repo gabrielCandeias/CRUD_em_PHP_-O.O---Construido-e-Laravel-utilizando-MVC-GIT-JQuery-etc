@@ -12,17 +12,17 @@
                         Meu Cadastro
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    
+
                         <li><a class="dropdown-item" href="/auth/edituser">Alterar meu cadastro</a></li>
                     </ul>
 
                 </li>
 
-
+                @if(auth()->user()->cargo_id == 2)
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/adiministracao">Visualizar cadastros</a>
                 </li>
-
+                @endif
 
 
 
