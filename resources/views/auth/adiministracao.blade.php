@@ -9,42 +9,26 @@
     <h5 class="card-title">Usuários cadastrados no Sistema</h5>
 
     <div class="card-body">
-        <div class="btn-group pesquisa-externo" role="group" aria-label="Basic mixed styles example">
-            <div class="btn-group pesquisa-interno">
-                <buttom class="btn btn-success pesquisa-btn">
-                    <ion-icon name="search"></ion-icon>
-                </buttom>
-                <input type="text" class="form-control pesquisa" placeholder="Nome" aria-label="Nome" aria-describedby="Nome">
-            </div>
-            <div class="btn-group pesquisa-interno">
+        <form action="" method="" class="btn-group search">
 
-                <buttom class="btn btn-success pesquisa-btn">
-                    <ion-icon name="search"></ion-icon>
-                </buttom>
-                <input type="text" class="form-control pesquisa" placeholder="Sexo" aria-label="Nome" aria-describedby="Nome">
-            </div>
-            <div class="btn-group pesquisa-interno">
 
-                <buttom class="btn btn-success pesquisa-btn">
-                    <ion-icon name="search"></ion-icon>
-                </buttom>
-                <input type="text" class="form-control pesquisa" placeholder="Nome" aria-label="Nome" aria-describedby="Nome">
-            </div>
-            <div class="btn-group pesquisa-interno">
+            <buttom class="btn btn-success btn-search">
+                <ion-icon name="search"></ion-icon>
+            </buttom>
 
-                <buttom class="btn btn-success pesquisa-btn">
-                    <ion-icon name="search"></ion-icon>
-                </buttom>
-                <input type="text" class="form-control pesquisa" placeholder="Estado" aria-label="Nome" aria-describedby="Nome">
-            </div>
-            <div class="btn-group pesquisa-interno">
+            <input type="text" class="form-control nome-search" placeholder="Nome" aria-label="Nome" aria-describedby="Nome">
 
-                <buttom class="btn btn-success pesquisa-btn">
-                    <ion-icon name="search"></ion-icon>
-                </buttom>
-                <input type="text" class="form-control pesquisa" placeholder="Data de Cadastro" aria-label="Nome" aria-describedby="Nome">
-            </div>
-        </div>
+            <select class="form-select sexo-search" aria-label="sexo" name="sexo">
+                <option selected></option>
+                <option value="PD">Prefiro não Declarar</option>
+                <option value="F">Feminino</option>
+                <option value="M">Masculino</option>
+            </select>
+
+            <input type="text" class="form-control estado-search" placeholder="Estado" >
+
+            <input type="date" class="form-control data-search" placeholder="Data de Cadastro" >
+        </form>
 
 
         <table class="table">
@@ -79,7 +63,7 @@
                     <td class="btn-group">
 
                         <div class="btn-change">
-                            <a href="" class="btn btn-warning">
+                            <a href="/auth/adiministracao/edit/{{$user->id}}" class="btn btn-warning">
                                 <ion-icon name="create-outline"></ion-icon>
                             </a>
                         </div>

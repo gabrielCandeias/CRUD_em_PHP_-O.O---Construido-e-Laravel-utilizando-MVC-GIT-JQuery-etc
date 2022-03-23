@@ -12,7 +12,8 @@
                         Meu Cadastro
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Alterar meu cadastro</a></li>
+                    
+                        <li><a class="dropdown-item" href="/auth/edituser">Alterar meu cadastro</a></li>
                     </ul>
 
                 </li>

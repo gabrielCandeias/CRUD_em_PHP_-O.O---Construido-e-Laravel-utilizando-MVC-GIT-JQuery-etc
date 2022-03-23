@@ -16,23 +16,40 @@
 
 }
 
-.pesquisa-externo {
-    margin: 0 auto;
-    margin-bottom: 20px;
-    margin-left: 6%;
-}
-
-.pesquisa-interno {
-    margin: 10px;
-}
-
-.btn-change{
+.btn-change {
     margin-right: 10px;
 }
-.pesquisa-btn{
-    border-top-left-radius: 40%;
-    border-bottom-left-radius: 40%;
+
+.btn-search {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-right: 10px;
+    min-width: 40px;
+    min-height: 40px;
+
 }
+
+.nome-search {
+    margin-right: 10px;
+}
+
+.estado-search {
+    margin-left: 10px;
+}
+
+.data-search {
+    padding-right: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 10px;
+}
+
+.search {
+    margin: 0% 10% 5% 10%;
+
+}
+
+
 
 /* Cadastro */
 .col {

@@ -30,12 +30,13 @@ class User extends Authenticatable
         'numero',
         'bairro',
         'complemento',
-        'cidade_id', 
+        'cidade_id',
         'telefone',
         'celular',
         'status',
     ];
-    public function cidade(){
+    public function cidade()
+    {
         return $this->belongsTo('App\Models\Cidade');
     }
 
@@ -48,7 +49,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    protected $guardad = [];
     /**
      * The attributes that should be cast.
      *
