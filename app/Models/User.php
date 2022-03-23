@@ -39,6 +39,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Cidade');
     }
+    public function cargo()
+    {
+        return $this->belongsTo('App\Models\Cargo');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -6,28 +6,32 @@
 
 @extends('layouts.nav')
 <div class="card adm">
-    <h5 class="card-title">Usuários cadastrados no Sistema</h5>
+    <h5 class="card-title">Usuários cadastrados no Sistema </h5>
 
     <div class="card-body">
-        <form action="" method="" class="btn-group search">
+        <form action="/auth/adiministracao" method="GET" class="btn-group search">
 
 
-            <buttom class="btn btn-success btn-search">
+            <button class="btn btn-success btn-search" type="submit" name="search" value="O">
                 <ion-icon name="search"></ion-icon>
-            </buttom>
+            </button>
 
-            <input type="text" class="form-control nome-search" placeholder="Nome" aria-label="Nome" aria-describedby="Nome">
 
-            <select class="form-select sexo-search" aria-label="sexo" name="sexo">
-                <option selected></option>
-                <option value="PD">Prefiro não Declarar</option>
-                <option value="F">Feminino</option>
-                <option value="M">Masculino</option>
+
+            <input type="text" class="form-control nome-search" placeholder="Nome" name="search_nome" aria-label="Nome" value="{{$search_nome}}" aria-describedby="Nome">
+
+            <select class="form-select sexo-search" aria-label="sexo" name="search_sexo">
+                <option selected value="">Sexo</option>
+                <option value="ND" @if ($search_sexo == "ND" ) {{ 'selected' }} @endif>Prefiro não Declarar</option>
+                <option value="F"  @if ($search_sexo == "F" ) {{ 'selected' }} @endif>Feminino</option>
+                <option value="M"  @if ($search_sexo == "M" ) {{ 'selected' }} @endif>Masculino</option>
             </select>
 
-            <input type="text" class="form-control estado-search" placeholder="Estado" >
+            <input type="text" class="form-control estado-search" placeholder="Estado"  name="search_estado" value="{{$search_estado}}">
 
-            <input type="date" class="form-control data-search" placeholder="Data de Cadastro" >
+            <input type="date" class="form-control data-search" placeholder="Data de Cadastro" name="search_data" value="{{$search_data}}">
+
+            <a href="/auth/adiministracao" class="btn btn-danger btn-search2 ">X</a>
         </form>
 
 
