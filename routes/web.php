@@ -16,20 +16,11 @@ use App\Http\Controllers\SystemController;
 
 Route::get('/', [SystemController::class, 'index'])->middleware(['auth']);
 
-Route::get('/auth/adiministracao', [SystemController::class, 'adiministracao'])->middleware(['auth']);
-
-/* A rota create esta no arquivo auth.php acima*/
-
-Route::delete('/auth/adiministracao/{id}', [SystemController::class, 'destroy'])->middleware(['auth']);
-
-Route::get('/auth/adiministracao/edit/{id}', [SystemController::class, 'edit'])->middleware(['auth']);
-
-Route::get('/auth/edituser', [SystemController::class, 'edituser'])->middleware(['auth']);
-
-Route::put('/auth/adiministracao/update/{id}', [SystemController::class, 'update'])->middleware(['auth']);
+// A rota create esta no arquivo auth.php acima
 
 Route::put('/auth/update/{id}', [SystemController::class, 'updateuser'])->middleware(['auth']);
 
+Route::get('/auth/edituser', [SystemController::class, 'edituser'])->middleware(['auth']);
 
 Route::get('/', function () {
     return view('dashboard');
@@ -37,3 +28,16 @@ Route::get('/', function () {
 
 
 require __DIR__ . '/auth.php';
+
+// Rotas do ADM
+
+Route::middleware(['auth', 'cargo:2'])->group(function () {
+
+    Route::get('/auth/adiministracao', [SystemController::class, 'adiministracao'])->middleware(['auth']);
+
+    Route::delete('/auth/adiministracao/{id}', [SystemController::class, 'destroy'])->middleware(['auth']);
+
+    Route::get('/auth/adiministracao/edit/{id}', [SystemController::class, 'edit'])->middleware(['auth']);
+
+    Route::put('/auth/adiministracao/update/{id}', [SystemController::class, 'update'])->middleware(['auth']);
+});
