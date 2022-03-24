@@ -1,3 +1,39 @@
+/*Cadastro e Login */
+
+.hr{
+    margin-bottom: 20px;
+}
+
+div.registro ion-icon{
+    font-size: 32px;
+    
+}
+
+.div-cards{
+    margin-bottom: 20px;
+    margin-left: 35%;
+    
+}
+
+.div-cards2{
+    margin-bottom: 20px;
+    margin-left: 44%;
+    
+}
+
+.registro-font{
+    margin-bottom: 10px;
+    font-size: 25px;
+    text-align: center;
+}
+.registro{
+    margin-left: 15px;
+}
+
+.tamanho-card-login{
+    max-height: 28rem;
+}
+
 /*Área Administrativa */
 .adm {
     margin: 0 auto;

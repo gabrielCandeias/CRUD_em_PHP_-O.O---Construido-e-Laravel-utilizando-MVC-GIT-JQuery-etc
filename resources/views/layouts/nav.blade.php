@@ -27,9 +27,9 @@
 
 
             </ul>
-            <form action="/logout" method="POST">
+            <form action="/logout" method="POST" >
                 @csrf
-                <a href="/logout" class="btn btn-outline-danger" onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
+                <a href="/logout" class="btn btn-outline-danger botao_form" onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
             </form>
         </div>
     </div>

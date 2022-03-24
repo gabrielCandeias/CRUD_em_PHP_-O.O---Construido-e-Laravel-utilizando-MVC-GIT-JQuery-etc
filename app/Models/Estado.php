@@ -13,4 +13,5 @@ class Estado extends Model
     {
         return $this->hasMany('App\Models\Cidade');
     }
-}
+
+} 

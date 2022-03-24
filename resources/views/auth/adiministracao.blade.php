@@ -6,7 +6,7 @@
 
 @extends('layouts.nav')
 <div class="card adm">
-    <h5 class="card-title">Usuários cadastrados no Sistema </h5>
+    <h5 class="card-title">Usuários Cadastrados no Sistema </h5>
 
     <div class="card-body">
         <form action="/auth/adiministracao" method="GET" class="btn-group search">
@@ -45,34 +45,42 @@
                     <th scope="col">CPF</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Celular</th>
+                    <th scope="col">Cidade</th>
                     <th scope="col">CEP</th>
+                    
                     <th scope="col">Endereço</th>
                     <th scope="col">Situação</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
+            
+            {{-- @dd($users) --}}
                 @foreach($users as $user)
+                
                 <tr>
-                    <th scope="row">{{$user->id}}</th>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->rg}}</td>
-                    <td>{{$user->cpf}}</td>
-                    <td>{{$user->telefone}}</td>
-                    <td>{{$user->celular}}</td>
-                    <td>{{$user->cep}}</td>
-                    <td>{{$user->endereco}}</td>
-                    <td>{{$user->status}}</td>
+                    <th scope="row">{{$user['id']}}</th>
+                    <td>{{$user['name']}}</td>
+                    
+                    <td>{{$user['email']}}</td>
+                    <td>{{$user['rg']}}</td>
+                    <td>{{$user ['cpf']}}</td>
+                    <td>{{$user ['telefone']}}</td>
+                    <td>{{$user ['celular']}}</td>
+                    <td>{{$user ['cidade_id']}}</td>
+                    <td>{{$user ['cep']}}</td>
+                    
+                    <td>{{$user ['endereco']}}</td>
+                    <td>{{$user ['status']}}</td>
                     <td class="btn-group">
 
                         <div class="btn-change">
-                            <a href="/auth/adiministracao/edit/{{$user->id}}" class="btn btn-warning">
+                            <a href="/auth/adiministracao/edit/{{$user['id']}}" class="btn btn-warning">
                                 <ion-icon name="create-outline"></ion-icon>
                             </a>
                         </div>
-                        @if($user->id != $user_logado->id)
-                        <form action="/auth/adiministracao/{{$user->id}}" method="POST" onsubmit="return confirm('Deseja mesmo excluir esse registro?')">
+                        @if($user['id'] != $user_logado->id)
+                        <form action="/auth/adiministracao/{{$user['id']}}" method="POST" onsubmit="return confirm('Deseja mesmo excluir esse registro?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">

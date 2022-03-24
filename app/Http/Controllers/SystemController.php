@@ -24,7 +24,7 @@ class SystemController extends Controller
 
         $users = User::orderBy('name');
 
-
+        $user_logado = auth()->user();
 
         if ($search) {
 
@@ -35,20 +35,34 @@ class SystemController extends Controller
             if ($search_sexo) {
                 $users->where('sexo', $search_sexo);
             }
-            if ($search_estado) {
-
-                $users->where('cidade_id', $search_estado);
-            }
-
             if ($search_data) {
                 $users->where('created_at', 'LIKE', "%$search_data%");
             }
+            if ($search_estado) {
+
+                // $estados = Estado::where('nome', $search_estado)->with(['cidade.user'])->get();
+                // dd($estados->toArray());
+
+                $estados = Estado::where('nome', 'Like', "%$search_estado%")->first();
+
+                if ($estados != null) {
+
+                    $cidades = Cidade::where('estado_id', $estados->id)->get();
+                    $result = array();
+                    foreach ($cidades as $cidade) {
+
+                        foreach (User::where('cidade_id', $cidade->id)->get()->toArray() as $user)
+                            $result[] = $user;
+                    }
+
+                    $users = $result;
+
+                    return view('auth.adiministracao', ['users' => $users, 'user_logado' => $user_logado, 'search_nome' => $search_nome, 'search_sexo' => $search_sexo, 'search_estado' => $search_estado, 'search_data' => $search_data]);
+                }
+            }
         }
 
-
-        $users = $users->get();
-
-        $user_logado = auth()->user();
+        $users = $users->get()->toArray();
 
         return view('auth.adiministracao', ['users' => $users, 'user_logado' => $user_logado, 'search_nome' => $search_nome, 'search_sexo' => $search_sexo, 'search_estado' => $search_estado, 'search_data' => $search_data]);
     }

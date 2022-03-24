@@ -717,7 +717,7 @@ select {
   margin-bottom: 1.5rem;
 }
 .mt-6 {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -1616,7 +1616,7 @@ select {
   }
 
   .sm\:max-w-md {
-    max-width: 60rem;
+    max-width: 58rem;
   }
 
   .sm\:max-w-lg {
