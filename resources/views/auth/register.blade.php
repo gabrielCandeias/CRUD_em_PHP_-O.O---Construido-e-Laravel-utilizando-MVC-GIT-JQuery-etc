@@ -4,7 +4,7 @@
 
             <h2 class="registro-font">Cadastro de Usuário</h2>
             <div class="registro">
-                <ion-icon name="person-add-outline" ></ion-icon>
+                <ion-icon name="person-add-outline"></ion-icon>
             </div>
         </div>
         <hr class="hr">
@@ -12,7 +12,8 @@
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
 
-        <form method="POST" action="{{ route('register') }}">
+        <form name="personForm" id="personForm" method="POST" action="{{ route('register') }}"
+            data-funcoes-url="{{ route('load_funcoes') }}">
             @csrf
 
             <div class="row">
@@ -114,8 +115,8 @@
                 </div>
                 <div class="col">
                     <x-label for="estado" value="Estado" />
-                    <select class="form-select block mt-1 w-full" aria-label="Default select example" name="estado"
-                        id="estado">
+                    <select class="form-select block mt-1 w-full" aria-label="Default select example" name="estado_id"
+                        id="estado_id">
                         @foreach ($estados as $estado)
                             <option value="{{ $estado->id }}"
                                 @if (old('estado') == '{{ $estado->id }}') {{ 'selected' }} @endif> {{ $estado->nome }}
@@ -163,4 +164,22 @@
         </form>
 
     </x-auth-card>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#estado_id").change(function() {
+                const url = $('#personForm').attr("data-funcoes-url");
+                estadoId = $(this).val();
+                $.ajax({
+                    url: url,
+                    data: {
+                        'estado_id': estadoId,
+                    },
+                    success: function(data) {
+                        $("#cidade_id").html(data);
+                    }
+                });
+            });
+
+        });
+    </script>
 </x-guest-layout>

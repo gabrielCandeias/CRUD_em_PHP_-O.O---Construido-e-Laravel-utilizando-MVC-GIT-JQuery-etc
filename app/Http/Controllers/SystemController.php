@@ -6,12 +6,51 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Estado;
 use App\Models\Cidade;
+use Illuminate\Support\Facades\DB;
 
 class SystemController extends Controller
 {
     public function index()
     {
         return view('dashboard');
+    }
+    public function __construct(Estado $estado, Cidade $cidade)
+    {
+
+        $this->estado = $estado;
+        $this->cidade = $cidade;
+    }
+    public function edit($id)
+    {
+
+        $user = User::findOrFail($id);
+
+        $estados = $this->estado->orderby('nome')->get();
+        $cidades = $this->cidade->where('id', 0)->orderby('nome')->get();
+
+        return view('auth.edit', ['user' => $user, 'estados' => $estados, 'cidades' => $cidades]);
+    }
+    public function edituser()
+    {
+        $users = auth()->user();
+        $user = User::findOrFail($users->id);
+
+        $estados = $this->estado->orderby('nome')->get();
+        $cidades = $this->cidade->where('id', 0)->orderby('nome')->get();
+
+        return view('auth.edituser', ['user' => $user, 'estados' => $estados, 'cidades' => $cidades]);
+    }
+
+    public function load_funcoes(Request $request)
+    {
+
+        $dataForm = $request->all();
+        $estado_id = $dataForm['estado_id'];
+
+        $sql = "Select cidades.id, cidades.nome from cidades where cidades.estado_id = '$estado_id'  order by cidades.nome";
+        $funcoes = DB::select($sql);
+
+        return view('auth.funcao_ajax', ['cidades' => $funcoes]);
     }
 
     public function adiministracao(Request $request)
@@ -67,10 +106,6 @@ class SystemController extends Controller
         return view('auth.adiministracao', ['users' => $users, 'user_logado' => $user_logado, 'search_nome' => $search_nome, 'search_sexo' => $search_sexo, 'search_estado' => $search_estado, 'search_data' => $search_data]);
     }
 
-    public function show()
-    {
-    }
-
     public function destroy($id)
     {
 
@@ -79,25 +114,11 @@ class SystemController extends Controller
         return redirect('/auth/adiministracao')->with(['msg', "Registro excluído com sucesso !"]);
     }
 
-    public function edit($id)
-    {
 
-        $user = User::findOrFail($id);
-        $estados = Estado::All();
-        $cidades = Cidade::All();
 
-        return view('auth.edit', ['user' => $user, 'estados' => $estados, 'cidades' => $cidades]);
-    }
 
-    public function edituser()
-    {
-        $users = auth()->user();
-        $user = User::findOrFail($users->id);
-        $estados = Estado::All();
-        $cidades = Cidade::All();
 
-        return view('auth.edituser', ['user' => $user, 'estados' => $estados, 'cidades' => $cidades]);
-    }
+
 
     public function update(Request $request)
     {

@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\SystemController;
 
-Route::get('/', [SystemController::class, 'index'])->middleware(['auth']);
+Route::get('load_funcoes',[SystemController::class, 'load_funcoes'])->name('load_funcoes');
 
+Route::get('/', [SystemController::class, 'index'])->middleware(['auth']);
+ 
 // A rota create esta no arquivo auth.php acima
 
 Route::put('/auth/update/{id}', [SystemController::class, 'updateuser'])->middleware(['auth']);
