@@ -124,6 +124,17 @@
                         <input type="tel" class="form-control" id="celular" name="celular" value="{{ $user->celular }}"
                             onkeypress="$(this).mask('(00) 0000-00009')" required />
                     </div>
+                    <div class="col">
+                        <label for="sexo" class="form-label">Status</label>
+                        <select class="form-select" aria-label="Default select example" name="status" id="status">
+
+                            <option value="S" @if ($user->status == 'S') {{ 'selected' }} @endif>Ativo</option>
+                            <option value="N" @if ($user->status == 'N') {{ 'selected' }} @endif>Inativo
+                            </option>
+                            
+
+                        </select>
+                    </div>
 
                 </div>
                 <a href="/auth/adiministracao" class="btn btn-primary">Voltar</a>

@@ -129,6 +129,7 @@
 
                     <select class="form-select block mt-1 w-full" aria-label="Default select example" name="cidade_id"
                         id="cidade_id">
+                       
                         @foreach ($cidades as $cidade)
                             <option value="{{ $cidade->id }}"
                                 @if (old('cidade') == '{{ $cidade->id }}') {{ 'selected' }} @endif>{{ $cidade->nome }}

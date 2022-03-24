@@ -125,7 +125,7 @@
                     </div>
 
                 </div>
-                <a href="/auth/adiministracao" class="btn btn-primary">Voltar</a>
+                <a href="/" class="btn btn-primary">Voltar</a>
                 <input type="submit" class="btn btn-dark" value="Salvar">
             </form>
         </div>

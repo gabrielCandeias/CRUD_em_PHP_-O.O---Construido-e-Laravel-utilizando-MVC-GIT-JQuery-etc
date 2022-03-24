@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
             'numero'    => 'required|string|max:50',
             'bairro'    => 'required|string|max:255',
             'complemento' => 'max:255',
-            'cidade_id'    => 'required|numeric|max:5',
+            'cidade_id'    => 'required|numeric|max:5564',
             'telefone'  => 'required|string|min:14|max:15',
             'celular'   => 'required|string|min:14|max:15',
         ]);
